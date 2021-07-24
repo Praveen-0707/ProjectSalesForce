@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+ 		
+ <listeners>
+    	<listener class-name="salesforce.utils.RetryListener"></listener>
+ </listeners>
+  
+  <test thread-count="5" name="WorkTypeGroups" verbose="5">
+    <!-- <groups>
+ 		<run>
+ 			<include name="Accounts"></include>
+ 			<include name="WorkTypeGroups"></include>
+		</run>
+ 	</groups> -->
+    <classes>
+      <class name="salesforce.testcases.CreateWorkTypeGroup"/>
+      <class name="salesforce.testcases.EditWorkTypeGroup"/>
+      <class name="salesforce.testcases.DeleteWorkTypeGroup"/>
+      <class name="salesforce.testcases.WorkTypeGroupSortingByName"/>
+    </classes>
+ </test>
+ 
+</suite>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="classes" name="Accounts(failed)">
+    <classes>
+      <class name="salesforce.testcases.CreateAccount">
+        <methods>
+          <include name="createNewAccount" invocation-numbers="0"/>
+          <include name="endReport"/>
+          <include name="endTestDetails"/>
+          <include name="testDetailedReport"/>
+          <include name="launchApp"/>
+          <include name="startReport"/>
+          <include name="setTestDetails"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- salesforce.testcases.CreateAccount -->
+      <class name="salesforce.testcases.EditAccount">
+        <methods>
+          <include name="endReport"/>
+          <include name="endTestDetails"/>
+          <include name="testDetailedReport"/>
+          <include name="launchApp"/>
+          <include name="startReport"/>
+          <include name="closeBrowser"/>
+          <include name="setTestDetails"/>
+          <include name="editAccount" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- salesforce.testcases.EditAccount -->
+    </classes>
+  </test> <!-- Accounts(failed) -->
+</suite> <!-- Failed suite [Suite] -->

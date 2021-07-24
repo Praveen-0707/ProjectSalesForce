@@ -1,0 +1,128 @@
+2021-07-11 01:32:35 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-11 01:32:35 INFO  Logs:11 - =====================================Create Account TEST START=========================================
+2021-07-11 01:32:35 INFO  Logs:22 - Creates new account in salesforce application
+2021-07-11 01:32:35 INFO  Logs:11 - =====================================Edit Account TEST START=========================================
+2021-07-11 01:32:35 INFO  Logs:22 - Edit account in salesforce application
+2021-07-11 01:33:53 INFO  Logs:15 - =====================================Create Account TEST END=========================================
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "index.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("index_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("index.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "index.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/index.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "head.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("head_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("head.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "head.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/head.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "nav.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("nav_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("nav.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "nav.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/nav.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "test-view/test-view.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("test-view/test-view_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("test-view/test-view.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "test-view/test-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/test-view/test-view.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "test-view/test-view-charts.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("test-view/test-view-charts_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("test-view/test-view-charts.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "test-view/test-view-charts.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/test-view/test-view-charts.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "test-view/standard.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("test-view/standard_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("test-view/standard.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "test-view/standard.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/test-view/standard.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - "test-view/standard.ftl"("en", UTF-8, parsed) cached copy not yet stale; using cached.
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "category-view/category-view.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("category-view/category-view_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("category-view/category-view.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "category-view/category-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/category-view/category-view.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "author-view/author-view.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("author-view/author-view_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("author-view/author-view.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "author-view/author-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/author-view/author-view.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "exception-view/exception-view.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("exception-view/exception-view_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("exception-view/exception-view.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "exception-view/exception-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/exception-view/exception-view.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "dashboard-view/dashboard-view.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("dashboard-view/dashboard-view_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("dashboard-view/dashboard-view.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "dashboard-view/dashboard-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/dashboard-view/dashboard-view.ftl"
+2021-07-11 01:33:53 DEBUG cache:45 - Couldn't find template in cache for "logs-view/testrunner-logs-view.ftl"("en", UTF-8, parsed); will try to load it.
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("logs-view/testrunner-logs-view_en.ftl"): Not found
+2021-07-11 01:33:53 DEBUG cache:45 - TemplateLoader.findTemplateSource("logs-view/testrunner-logs-view.ftl"): Found
+2021-07-11 01:33:53 DEBUG cache:45 - Loading template for "logs-view/testrunner-logs-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/HP/.m2/repository/com/aventstack/extentreports/3.1.5/extentreports-3.1.5.jar!/com/aventstack/extentreports/view/html-report/logs-view/testrunner-logs-view.ftl"
+2021-07-11 01:33:53 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-11 01:42:04 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-11 01:42:04 INFO  Logs:11 - =====================================Create Account - TEST START=========================================
+2021-07-11 01:42:04 INFO  Logs:22 - Creates new account in salesforce application
+2021-07-11 01:42:04 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-11 01:42:04 INFO  Logs:22 - Edit account in salesforce application
+2021-07-11 01:43:36 INFO  Logs:15 - =====================================Create Account - TEST END=========================================
+2021-07-11 01:43:37 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-11 10:59:59 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-11 10:59:59 INFO  Logs:11 - =====================================Manage Attachments - TEST START=========================================
+2021-07-11 10:59:59 INFO  Logs:22 - Attach and Delete Document from Campaign
+2021-07-11 14:42:33 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-11 14:42:33 INFO  Logs:11 - =====================================Create Account - TEST START=========================================
+2021-07-11 14:42:33 INFO  Logs:22 - Creates new account in salesforce application
+2021-07-11 14:42:33 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-11 14:42:33 INFO  Logs:22 - Edit account in salesforce application
+2021-07-11 14:43:59 INFO  Logs:15 - =====================================Create Account - TEST END=========================================
+2021-07-11 14:43:59 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-16 00:18:44 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-16 00:18:44 INFO  Logs:11 - =====================================Create Account - TEST START=========================================
+2021-07-16 00:18:44 INFO  Logs:22 - Creates new account in salesforce application
+2021-07-16 00:18:44 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-16 00:18:44 INFO  Logs:22 - Edit account in salesforce application
+2021-07-16 00:53:41 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-16 00:53:41 INFO  Logs:11 - =====================================Create Account - TEST START=========================================
+2021-07-16 00:53:41 INFO  Logs:22 - Creates new account in salesforce application
+2021-07-16 00:53:41 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-16 00:53:41 INFO  Logs:22 - Edit account in salesforce application
+2021-07-16 00:57:33 INFO  Logs:15 - =====================================Create Account - TEST END=========================================
+2021-07-16 00:57:34 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-16 01:14:10 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-16 01:14:10 INFO  Logs:11 - =====================================Create Account - TEST START=========================================
+2021-07-16 01:14:10 INFO  Logs:22 - Creates new account in salesforce application
+2021-07-16 01:14:10 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-16 01:14:10 INFO  Logs:22 - Edit account in salesforce application
+2021-07-16 01:15:50 INFO  Logs:15 - =====================================Create Account - TEST END=========================================
+2021-07-16 01:15:51 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-16 01:18:24 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-16 01:18:24 INFO  Logs:11 - =====================================Create Account - TEST START=========================================
+2021-07-16 01:18:24 INFO  Logs:22 - Creates new account in salesforce application
+2021-07-16 01:18:24 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-16 01:18:24 INFO  Logs:22 - Edit account in salesforce application
+2021-07-16 01:20:25 INFO  Logs:15 - =====================================Create Account - TEST END=========================================
+2021-07-16 01:20:25 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-16 23:35:47 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-16 23:35:47 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-16 23:35:47 INFO  Logs:22 - Edit account in salesforce application
+2021-07-16 23:36:53 INFO  Logs:15 - =====================================Edit Account - TEST END=========================================
+2021-07-16 23:36:53 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-17 00:42:42 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-17 00:42:42 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-17 00:42:42 INFO  Logs:22 - Edit account in salesforce application
+2021-07-17 00:43:52 INFO  Logs:15 - =====================================Edit Account - TEST END=========================================
+2021-07-17 00:43:52 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-17 00:45:52 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-17 00:45:52 INFO  Logs:11 - =====================================Edit Account - TEST START=========================================
+2021-07-17 00:45:52 INFO  Logs:22 - Edit account in salesforce application
+2021-07-17 00:51:07 INFO  Logs:15 - =====================================Edit Account - TEST END=========================================
+2021-07-17 00:51:07 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-18 13:27:24 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 13:27:25 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-18 13:29:31 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 13:29:32 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-18 13:30:57 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 13:31:05 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-18 13:33:03 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 13:34:39 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 13:36:54 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-18 13:37:52 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 13:38:31 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-18 14:02:18 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 14:03:41 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-18 14:14:28 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 14:27:25 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 14:28:23 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-18 17:05:59 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-18 17:06:36 INFO  Logs:22 - Reporter ended in After Suite
