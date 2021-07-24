@@ -177,3 +177,15 @@
 2021-07-24 15:35:21 INFO  Logs:22 - Reporter Started in Before Suite
 2021-07-24 15:35:21 INFO  Logs:11 - =====================================Create Account - TEST START=========================================
 2021-07-24 15:35:21 INFO  Logs:22 - Creates new account in salesforce application
+2021-07-24 17:04:17 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-24 17:04:17 INFO  Logs:11 - =====================================Create Lead - TEST START=========================================
+2021-07-24 17:04:17 INFO  Logs:22 - Create New Lead for Campaign
+2021-07-24 17:04:56 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-24 17:12:42 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-24 17:12:42 INFO  Logs:11 - =====================================Create Lead - TEST START=========================================
+2021-07-24 17:12:42 INFO  Logs:22 - Create New Lead for Campaign
+2021-07-24 17:13:18 INFO  Logs:22 - Reporter ended in After Suite
+2021-07-24 17:21:35 INFO  Logs:22 - Reporter Started in Before Suite
+2021-07-24 17:21:35 INFO  Logs:11 - =====================================Create Lead - TEST START=========================================
+2021-07-24 17:21:35 INFO  Logs:22 - Create New Lead for Campaign
+2021-07-24 17:22:11 INFO  Logs:22 - Reporter ended in After Suite
