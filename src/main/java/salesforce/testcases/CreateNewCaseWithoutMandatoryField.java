@@ -33,7 +33,7 @@ public class CreateNewCaseWithoutMandatoryField extends PreAndPost {
 		.searchApp("Sales").clickOnSales();
 		
 		clickOnTab("Cases");
-		new SalesPage().clickOnNewCase()
+		new SalesPage().clickOnNewButton()
 		.selectContractContactName(contactName).inputSubject(subject).inputCaseDescription(description)
 		.clickonSaveButton().errValidationOnCaseCreation(errMsg);
 

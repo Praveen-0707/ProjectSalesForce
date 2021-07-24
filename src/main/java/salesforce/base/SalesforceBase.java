@@ -299,9 +299,11 @@ public class SalesforceBase extends Reporter {
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		try {
 			WebElement ele = getDriver().findElementByXPath("//a[@title='"+value+"']");
-			webDriverWait4ElementToBeClickable(ele);
+			webDriverWait4VisibilityOfEle(ele);
 			js.executeScript("arguments[0].click();", ele);
 		} catch (JavascriptException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

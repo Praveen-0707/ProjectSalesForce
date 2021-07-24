@@ -17,14 +17,14 @@ public class SalesPage extends PreAndPost {
 		switchToDefaultContent();
 	}
 	
-	public SalesPage clickOnNewCase()
+	public SalesPage clickOnNewButton()
 	{
 		try {
 			click(locateElement("xapth","//a[@title='New' and @role='button']"));
-			reportStep("Clicked on New Case Link", "Pass");
+			reportStep("Clicked on New Button", "Pass");
 			solidWait(3);
 		} catch (Exception e) {
-			reportStep("Unable to click on New Case Link", "Fail");
+			reportStep("Unable to click on New Button", "Fail");
 		}
 		return this;
 	}
@@ -276,6 +276,23 @@ public class SalesPage extends PreAndPost {
 		return this;
 	}
 	
+	public SalesPage selectAccessType(String value)
+	{
+		try {
+			WebElement ele = locateElement("xapth","//span[text()='Access Type']/following::a[@class='select']");
+			scrollToVisibleElement(ele);
+			click(ele);
+			solidWait(1);
+			ele = locateElement("xapth","//span[text()='Access Type']/following::a[@title='"+value+"']");
+			scrollToVisibleElement(ele);
+			click(ele);
+			reportStep("Select value from Salutation dropdown: "+value, "Pass");
+		} catch (Exception e) {
+			reportStep("Unable to select value from Salutation dropdown: "+value, "Fail");
+		}
+		return this;
+	}
+	
 	public SalesPage selectContractContactName(String value)
 	{
 		try {
@@ -287,6 +304,17 @@ public class SalesPage extends PreAndPost {
 			reportStep("Select value from ContractContactName dropdown: "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to select value from ContractContactName dropdown: "+value, "Fail");
+		}
+		return this;
+	}
+	
+	public SalesPage inputGroupName(String value)
+	{
+		try {
+			type(locateElement("xapth","(//label//span[text()='Name']/following::input)[1]"), value);
+			reportStep("Enter Group Name: "+value, "Pass");
+		} catch (Exception e) {
+			reportStep("Unable to enter Group Name: "+value, "Fail");
 		}
 		return this;
 	}
@@ -470,6 +498,18 @@ public class SalesPage extends PreAndPost {
 			reportStep("Click on Save button","Pass");
 		} catch (Exception e) {
 			reportStep("Unable to click on Save button","Fail");
+		}
+		return this;
+	}
+	
+	public SalesPage clickonSaveAndNextButton()
+	{
+		try {
+			click(locateElement("xapth","//span[text()='Save & Next']/.."));
+			solidWait(1);
+			reportStep("Click on Save and Next button","Pass");
+		} catch (Exception e) {
+			reportStep("Unable to click on Save and Next button","Fail");
 		}
 		return this;
 	}
