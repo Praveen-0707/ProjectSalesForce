@@ -34,6 +34,7 @@ public class CreateAccount extends PreAndPost {
 		
 		new AccountsPage()
 		.clickOnCreateNewAccount().inputAccountName(accName)
-		.selectOwnership("Public").clickOnSaveButton().createAccountValidation(accName);
+//		.selectOwnership("Public")
+		.clickOnSaveButton().createAccountValidation(accName);
 	}
 }

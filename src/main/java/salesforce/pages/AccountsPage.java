@@ -113,8 +113,8 @@ public class AccountsPage extends PreAndPost {
 		try {
 			WebElement dd_ownership = locateElement("xpath", "//label[text()='Ownership']/following-sibling::div//input[@class='slds-input slds-combobox__input' and @type ='text']");
 			click(dd_ownership);
-			solidWait(1);
-			WebElement ele = locateElement("xapth", "(//label[text()='Ownership']/following::input/parent::div/following-sibling::div//lightning-base-combobox-item//span[@class='slds-truncate' and text()='"+value+"'])[1]");
+			solidWait(3);
+			WebElement ele = locateElement("xpath", "(//label[text()='Ownership']/following::input/parent::div/following-sibling::div//lightning-base-combobox-item//span[@class='slds-truncate' and text()='"+value+"'])[1]");
 			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Click on Ownership dropdown and select value as: "+value, "Pass");
@@ -131,7 +131,7 @@ public class AccountsPage extends PreAndPost {
 			click(dd_industry);
 			solidWait(1);
 			WebElement ele = locateElement("xpath","(//label[text()='Industry']/following::input/parent::div/following-sibling::div//lightning-base-combobox-item//span[@class='slds-truncate' and text()='"+value+"'])[1]");
-			scrollToVisibleElement(ele);
+//			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Click on Industry dropdown and select value as: "+value, "Pass");
 		} catch (Exception e) {

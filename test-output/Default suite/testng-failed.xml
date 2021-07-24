@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="salesforce.testcases.SalesforceLogin">
+      <class name="salesforce.testcases.CreateAccount">
         <methods>
-          <include name="setTestDetails"/>
           <include name="beforeClass"/>
           <include name="beforeMethod"/>
-          <include name="login" invocation-numbers="0"/>
+          <include name="createNewAccount" invocation-numbers="0"/>
           <include name="afterMethod"/>
+          <include name="setTestDetails"/>
           <include name="afterSuite"/>
           <include name="beforeSuite"/>
         </methods>
-      </class> <!-- salesforce.testcases.SalesforceLogin -->
+      </class> <!-- salesforce.testcases.CreateAccount -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

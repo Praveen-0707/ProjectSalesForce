@@ -48,7 +48,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Jul 18, 2021 05:05:59 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Jul 24, 2021 03:30:22 PM</span>
 				</a>
 			</li>
 			<li>
@@ -74,6 +74,7 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -86,7 +87,7 @@
 					<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>Smoke</a></li>
+					<li><a href='#'>Regression</a></li>
 					<li class='divider'></li>
 					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
 				</ul>
@@ -134,10 +135,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>1</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -149,10 +150,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='85.714%'><span class='strong'>6</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='90.476%'><span class='strong'>19</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='14.286%'>1</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='4.762%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='4.762%'>1</span> others
 				</div>
 			</div>
 		</div>
@@ -167,22 +168,22 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='1'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>Log into Salesforce Application</span>
-						<span class='test-time'>Jul 18, 2021 05:05:59 PM</span>
-						<span class='test-status right pass'>pass</span>
+						<span class='test-name'>Create Account</span>
+						<span class='test-time'>Jul 24, 2021 03:30:23 PM</span>
+						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Jul 18, 2021 05:05:59 PM</span>
-	<span class='label end-time'>Jul 18, 2021 05:06:36 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 36s+443ms</span>
+	<span class='label start-time'>Jul 24, 2021 03:30:23 PM</span>
+	<span class='label end-time'>Jul 24, 2021 03:31:03 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 40s+652ms</span>
 </div>
-	<div class='test-desc'>Login should be successful </div>
+	<div class='test-desc'>Creates new account in salesforce application </div>
 	<div class='test-attributes'>
 			<div class='category-list'>
-				<span class='category label white-text'>Smoke</span>
+				<span class='category label white-text'>Regression</span>
 			</div>
 			<div class='author-list'>
 				<span class='author label white-text'>PraveenRajA</span>
@@ -190,12 +191,12 @@
 	</div>
 	<ul class='collapsible node-list' data-collapsible='accordion'>
 		
-				<li class='node level-1 leaf pass' status='pass' test-id='2'>
+				<li class='node level-1 leaf fail' status='fail' test-id='2'>
 					<div class='collapsible-header'>
-						<h5 class='node-name'>Log into Salesforce Application</h5>
-						<span class="node-time label grey lighten-1 white-text">Jul 18, 2021 05:06:36 PM</span>
-						<span class='node-duration label grey lighten-1 white-text'>0h 0m 35s+708ms</span>
-						<span class='test-status right pass'>pass</span>
+						<h5 class='node-name'>Create Account</h5>
+						<span class="node-time label grey lighten-1 white-text">Jul 24, 2021 03:31:03 PM</span>
+						<span class='node-duration label grey lighten-1 white-text'>0h 0m 40s+1ms</span>
+						<span class='test-status right fail'>fail</span>
 					</div>
 						<div class='collapsible-body'>
 								<div class='node-steps'>
@@ -210,37 +211,107 @@
 										<tbody>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>5:06:05 PM</td>
-													<td class='step-details'>The data: cypress@testleaf.com entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (a1105bbffd26f1f68d1a001aef6fc1ee)] -> id: username]</td>
+													<td class='timestamp'>3:30:27 PM</td>
+													<td class='step-details'>The data: cypress@testleaf.com entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (f8808886ef93b40fca7257c5d2f7ccfc)] -> id: username]</td>
 												</tr>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>5:06:05 PM</td>
+													<td class='timestamp'>3:30:27 PM</td>
 													<td class='step-details'>Username entered as: cypress@testleaf.com</td>
 												</tr>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>5:06:05 PM</td>
-													<td class='step-details'>The data: Selbootcamp@1234 entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (a1105bbffd26f1f68d1a001aef6fc1ee)] -> id: password]</td>
+													<td class='timestamp'>3:30:28 PM</td>
+													<td class='step-details'>The data: Selbootcamp@1234 entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (f8808886ef93b40fca7257c5d2f7ccfc)] -> id: password]</td>
 												</tr>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>5:06:05 PM</td>
+													<td class='timestamp'>3:30:28 PM</td>
 													<td class='step-details'>Password entered as: Selbootcamp@1234</td>
 												</tr>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>5:06:08 PM</td>
+													<td class='timestamp'>3:30:28 PM</td>
 													<td class='step-details'>The element  is clicked</td>
 												</tr>
 												<tr class='log' status='info'>
 													<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-													<td class='timestamp'>5:06:32 PM</td>
+													<td class='timestamp'>3:30:51 PM</td>
 													<td class='step-details'>Salesforce Classic Login is not displayed</td>
 												</tr>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>5:06:36 PM</td>
+													<td class='timestamp'>3:30:51 PM</td>
+													<td class='step-details'>The element  is clicked</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:51 PM</td>
+													<td class='step-details'>Clicked on Application Launcher</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:52 PM</td>
+													<td class='step-details'>The element View All is clicked</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:52 PM</td>
+													<td class='step-details'>Clicked on View All from Application Launcher</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:53 PM</td>
+													<td class='step-details'>The data: Account entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (f8808886ef93b40fca7257c5d2f7ccfc)] -> xpath: //input[@type='search' and @placeholder='Search apps or items...']]</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:53 PM</td>
+													<td class='step-details'>Search for Account application on HomePage</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:54 PM</td>
+													<td class='step-details'>The element Account is clicked</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:54 PM</td>
+													<td class='step-details'>Clicked on Account Link</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:56 PM</td>
+													<td class='step-details'>The element New is clicked</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:56 PM</td>
+													<td class='step-details'>Clicked on New Account button</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:59 PM</td>
+													<td class='step-details'>The data: JenkinsRun entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (f8808886ef93b40fca7257c5d2f7ccfc)] -> xpath: //input[@name='Name']]</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:59 PM</td>
+													<td class='step-details'>Enter Account Name as: JenkinsRun</td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:30:59 PM</td>
+													<td class='step-details'>The element  is clicked</td>
+												</tr>
+												<tr class='log' status='fail'>
+													<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+													<td class='timestamp'>3:30:59 PM</td>
+													<td class='step-details'>Unable to click on Ownership dropdown and select value as: Public<img data-featherlight='.././reports/screenshots/img_3598.jpg' width='10%' src='.././reports/screenshots/img_3598.jpg' data-src='.././reports/screenshots/img_3598.jpg'></td>
+												</tr>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>3:31:03 PM</td>
 													<td class='step-details'>The browser is closed</td>
 												</tr>
 										</tbody>
@@ -303,15 +374,15 @@
 				
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>Smoke</span>
+						<span class='category-name'>Regression</span>
 						<span class='category-status right'>
-							<span class='label pass'>1</span>
+							<span class='label fail'>1</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
 							
+							<span class='label red lighten-1 white-text'>Failed: 1</span>
 							
 						</div>
 					
@@ -326,9 +397,9 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Jul 18, 2021 05:05:59 PM</td>
-										<td class='linked' test-id='1'>Log into Salesforce Application</td>
-										<td><span class='test-status pass'>pass</span></td>
+										<td>Jul 24, 2021 03:30:23 PM</td>
+										<td class='linked' test-id='1'>Create Account</td>
+										<td><span class='test-status fail'>fail</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -375,13 +446,13 @@
                             <div class='author-heading'>
                                 <span class='author-name'>PraveenRajA</span>
                                 <span class='author-status right'>
-                                        <span class='label pass'>1</span>
+                                        <span class='label fail'>1</span>
 						        </span>
                             </div>
                             <div class='author-content hide'>
                                 <div class='author-status-counts'>
-                                    <span class='label green accent-4 white-text'>Passed: 1</span>
                                     
+                                    <span class='label red lighten-1 white-text'>Failed: 1</span>
                                     
                                 </div>
 
@@ -396,9 +467,9 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Jul 18, 2021 05:05:59 PM</td>
-                                                <td class='linked' test-id='1'>Log into Salesforce Application</td>
-                                                <td><span class='test-status pass'>pass</span></td>
+                                                <td>Jul 24, 2021 03:30:23 PM</td>
+                                                <td class='linked' test-id='1'>Create Account</td>
+                                                <td><span class='test-status fail'>fail</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -431,25 +502,25 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>7</div>
+					<div class='panel-lead'>21</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Jul 18, 2021 05:05:59 PM</div>
+					<div class='panel-lead'>Jul 24, 2021 03:30:22 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Jul 18, 2021 05:06:36 PM</div>
+			 		<div class='panel-lead'>Jul 24, 2021 03:31:03 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 0m 36s+684ms</div>
+					<div class='panel-lead'>0h 0m 40s+883ms</div>
 				</div>
 			</div>
 			<div class='col s6'>
@@ -465,12 +536,12 @@
 							<th>Passed %</th>
 						</tr>
 						<tr>
-							<td>Smoke</td>
+							<td>Regression</td>
+							<td>0</td>
 							<td>1</td>
 							<td>0</td>
-							<td>0</td>
 							<td>
-									100%
+									0%
 							</td>
 						</tr>
 					</table>
@@ -486,22 +557,22 @@
 
 		<script>
 			var statusGroup = {
-				passParent: 1,
-				failParent: 0,
+				passParent: 0,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 0,
+				exceptionsParent: 1,
 				
-				passChild: 6,
-				failChild: 0,
+				passChild: 19,
+				failChild: 1,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 1,
-				exceptionsChild: 0,
+				exceptionsChild: 1,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

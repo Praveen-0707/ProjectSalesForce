@@ -165,7 +165,7 @@ public class SalesforceBase extends Reporter {
 	
 	public void takeScreenshotOnFailed(String methodName)
 	{
-		File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		File srcFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
 			FileUtils.copyFile(srcFile, new File("./screenshots/failedStep_"
 													+ methodName + ".jpg"));
@@ -222,7 +222,7 @@ public class SalesforceBase extends Reporter {
 	
 	public WebElement webDriverWait4VisibilityOfEle(WebElement ele){
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
 		} catch(StaleElementReferenceException e) {
 			e.printStackTrace();
 		} catch (NoSuchElementException e) {
@@ -237,7 +237,7 @@ public class SalesforceBase extends Reporter {
 	
 	public WebElement webDriverWait4ElementToBeClickable(WebElement ele){
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele));
 		} catch(StaleElementReferenceException e) {
 			e.printStackTrace();
 		} catch (NoSuchElementException e) {
@@ -252,7 +252,7 @@ public class SalesforceBase extends Reporter {
 	
 	public WebElement webDriverWait4FrameToBeAvailableAndSwitchTo(WebElement ele){
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(ele));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(ele));
 		} catch(StaleElementReferenceException e) {
 			e.printStackTrace();
 		} catch (NoSuchFrameException e) {
@@ -267,7 +267,7 @@ public class SalesforceBase extends Reporter {
 	
 	public int webDriverWait4FrameToBeAvailableAndSwitchTo(int eleIndex){
 		try {
-			new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(eleIndex));
+			new WebDriverWait(getDriver(), Duration.ofSeconds(20)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(eleIndex));
 		} catch(StaleElementReferenceException e) {
 			e.printStackTrace();
 		} catch (NoSuchFrameException e) {
@@ -296,7 +296,7 @@ public class SalesforceBase extends Reporter {
 	
 	public void clickOnTab(String value)
 	{
-		JavascriptExecutor js = (JavascriptExecutor)driver;
+		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		try {
 			WebElement ele = getDriver().findElementByXPath("//a[@title='"+value+"']");
 			webDriverWait4ElementToBeClickable(ele);

@@ -167,6 +167,7 @@ public class BrowserActions extends SalesforceBase implements IBrowserActions{
 	public void scrollToVisibleElement(WebElement ele)
 	{
 		JavascriptExecutor js = (JavascriptExecutor)driver;
+		webDriverWait4VisibilityOfEle(ele);
 		try {
 			js.executeScript("arguments[0].scrollIntoView();", ele);
 		} catch (JavascriptException e) {
