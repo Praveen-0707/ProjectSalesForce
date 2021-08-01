@@ -24,6 +24,19 @@ public class ServiceConsolePage extends PreAndPost {
 		return new NewDashboardPage();
 	}
 	
+	public ServiceConsolePage clickOnTab(String value)
+	{
+		try {
+			clickByJS(locateElement("xpath","//a[@title='"+value+"']"));
+			reportStep("Clicked on Tab: "+value, "Pass");
+			solidWait(3);
+		} catch (Exception e) {
+			e.printStackTrace();
+			reportStep("Unable to click on Tab: "+value, "Fail");
+		}
+		return this;
+	}
+	
 	public ServiceConsolePage clickOnNewButton()
 	{
 		try {

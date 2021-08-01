@@ -132,7 +132,7 @@ public class SalesforceBase extends Reporter {
 	public void deletePopUpConfirmation()
 	{
 		try {
-			WebElement clkDelete = getDriver().findElementByXPath("//button//span[text()='Delete']");
+			WebElement clkDelete = getDriver().findElementByXPath("//button//span[contains(text(),'Delete')]");
 			webDriverWait4ElementToBeClickable(clkDelete);
 			clkDelete.click();
 		} catch (Exception e) {
@@ -294,19 +294,19 @@ public class SalesforceBase extends Reporter {
 		return randomString;
 	}
 	
-	public void clickOnTab(String value)
-	{
-		JavascriptExecutor js = (JavascriptExecutor)getDriver();
-		try {
-			WebElement ele = getDriver().findElementByXPath("//a[@title='"+value+"']");
-			webDriverWait4VisibilityOfEle(ele);
-			js.executeScript("arguments[0].click();", ele);
-		} catch (JavascriptException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	public void clickOnTab(String value)
+//	{
+//		JavascriptExecutor js = (JavascriptExecutor)getDriver();
+//		try {
+//			WebElement ele = getDriver().findElementByXPath("//a[@title='"+value+"']");
+//			webDriverWait4VisibilityOfEle(ele);
+//			js.executeScript("arguments[0].click();", ele);
+//		} catch (JavascriptException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	public void uploadAttachment(String fileLocation)
 	{	
@@ -325,9 +325,9 @@ public class SalesforceBase extends Reporter {
 			robot.keyRelease(KeyEvent.VK_ENTER);
 			solidWait(3);
 
-			WebElement ele = getDriver().findElement(By.xpath("//button[@type='button']//span[text()='Done']"));
-			webDriverWait4VisibilityOfEle(ele);
-			ele.click();
+//			WebElement ele = getDriver().findElement(By.xpath("//button[@type='button']//span[text()='Done']"));
+//			webDriverWait4VisibilityOfEle(ele);
+//			ele.click();
 		} catch (HeadlessException e) {
 			e.printStackTrace();
 		} catch (AWTException e) {

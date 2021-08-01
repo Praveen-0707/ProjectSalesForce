@@ -31,8 +31,8 @@ public class AttachAndDeleteDocumentFromCampaign extends PreAndPost {
 		new LoginPage(prop)
 		.enterUsername().enterPassword().clickLogin()
 		.clickToggleButton().clickViewAll()
-		.searchApp("Sales").clickOnSales();
-		clickOnTab("Campaigns");
+		.searchApp("Sales").clickOnSales()
+		.clickOnTab("Campaigns");
 		
 		SalesPage sales = new SalesPage();
 		

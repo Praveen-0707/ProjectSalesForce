@@ -6,6 +6,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
@@ -20,7 +21,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickOnNewButton()
 	{
 		try {
-			click(locateElement("xapth","//a[@title='New' and @role='button']"));
+			click(locateElement("xpath","//a[@title='New' and @role='button']"));
 			reportStep("Clicked on New Button", "Pass");
 			solidWait(3);
 		} catch (Exception e) {
@@ -29,10 +30,23 @@ public class SalesPage extends PreAndPost {
 		return this;
 	}
 	
-	public SalesPage searchCampaign(String value)
+	public SalesPage clickOnTab(String value)
 	{
 		try {
-			WebElement searchCampaign = locateElement("xapth","//input[contains(@placeholder,'Search this list')]");
+			clickByJS(locateElement("xpath","//a[@title='"+value+"']"));
+			reportStep("Clicked on Tab: "+value, "Pass");
+			solidWait(3);
+		} catch (Exception e) {
+			e.printStackTrace();
+			reportStep("Unable to click on Tab: "+value, "Fail");
+		}
+		return this;
+	}
+	
+	public SalesPage searchFor(String value)
+	{
+		try {
+			WebElement searchCampaign = locateElement("xpath","//input[contains(@placeholder,'Search this list')]");
 			typeAndEnter(searchCampaign, value);
 			reportStep("Search for Campaign: "+value, "Pass");
 			solidWait(2);
@@ -45,8 +59,8 @@ public class SalesPage extends PreAndPost {
 	public SalesPage searchAndClickOnCampaign(String value)
 	{
 		try {
-			searchCampaign(value);
-			click(locateElement("xapth","(//a[text()='" + value + "'])[1]"));
+			searchFor(value);
+			click(locateElement("xpath","(//a[text()='" + value + "'])[1]"));
 			reportStep("Search for Campaign: "+value +" and clicked on it", "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to search and click on Campaign: "+value, "Fail");
@@ -57,7 +71,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickAndViewAllCampaignMembers()
 	{
 		try {
-			click(locateElement("xapth","//span[@title='Campaign Members']/../../../../../following-sibling::div//span[text()='View All']"));
+			click(locateElement("xpath","//span[@title='Campaign Members']/../../../../../following-sibling::div//span[text()='View All']"));
 			reportStep("Click on view all campaign members", "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to click on view all campaign members", "Fail");
@@ -70,13 +84,13 @@ public class SalesPage extends PreAndPost {
 		try
 		{
 			String anchorTag = "a";
-			String tagName = locateElement("xapth","//a[@title='"+fileName+"']").getTagName();
-			String linkText = locateElement("xapth","//a[@title='"+fileName+"']").getText();
+			String tagName = locateElement("xpath","//a[@title='"+fileName+"']").getTagName();
+			String linkText = locateElement("xpath","//a[@title='"+fileName+"']").getText();
 			if((tagName.equals(anchorTag))&&(linkText.contains(fileName)))
 			{
 				reportStep("Upload attachment is successful: "+fileName, "Pass");
 				solidWait(2);
-				click(locateElement("xapth","//a[@title='"+fileName+"']"));
+				click(locateElement("xpath","//a[@title='"+fileName+"']"));
 			}
 			else
 			{
@@ -96,10 +110,31 @@ public class SalesPage extends PreAndPost {
 		return this;
 	}
 	
+	public SalesPage verifyDeleteGroup(String grpName)
+	{
+		try
+		{
+			String displayMsgValue = getText(locateElement("xpath","//span[contains(@class,'toastMessage')]"));
+			if (displayMsgValue.contains(grpName) && displayMsgValue.contains("was deleted"))
+			{
+				reportStep("Delete group is successful: "+grpName, "Pass");
+			}
+			else
+			{
+				reportStep("Unable to delete group: "+grpName, "Fail");
+			}
+		}
+		catch(Exception e)
+		{
+			reportStep("Unknown exception occurred while trying to verify delete group: "+grpName, "Fail");
+		}
+		return this;
+	}
+	
 	public SalesPage clickOnViewAllAttachments()
 	{
 		try {
-			WebElement ele = locateElement("xapth","//span[@class='view-all-label']/span[text()='Attachments']");
+			WebElement ele = locateElement("xpath","//span[@class='view-all-label']/span[text()='Attachments']");
 			clickByJS(ele);
 			reportStep("Clicked on ViewAll Attachment", "Pass");
 			solidWait(2);
@@ -113,18 +148,18 @@ public class SalesPage extends PreAndPost {
 	{
 		try
 		{
-			List<WebElement> files = locateElements("xapth","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr");
+			List<WebElement> files = locateElements("xpath","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr");
 			int cnt = files.size();
 			for (int i = 1; i <= cnt; i++)
 			{
-				WebElement listofFiles = locateElement("xapth","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr["+i+"]/th//a");
+				WebElement listofFiles = locateElement("xpath","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr["+i+"]/th//a");
 				String UploadedFile = listofFiles.getText();
 				if (UploadedFile.contains(fileName))
 				{
-					WebElement ele = locateElement("xapth","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr["+i+"]/td[5]//a[@role='button']");
+					WebElement ele = locateElement("xpath","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr["+i+"]/td[5]//a[@role='button']");
 					clickByJS(ele);
 					solidWait(1);
-					click(locateElement("xapth","//div[@role='button' and @title='Delete']/.."));
+					click(locateElement("xpath","//div[@role='button' and @title='Delete']/.."));
 					reportStep("Clicked on Delete option on file: "+fileName, "Pass");
 					deletePopUpConfirmation();
 					solidWait(2);
@@ -144,11 +179,11 @@ public class SalesPage extends PreAndPost {
 	{
 		try
 		{
-			List<WebElement> tb_rows = locateElements("xapth","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr");
+			List<WebElement> tb_rows = locateElements("xpath","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr");
 			int size = tb_rows.size();
 			for (int j = 1; j <= size; j++)
 			{
-				WebElement searchDelFile = locateElement("xapth","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr["+j+"]/th//a");
+				WebElement searchDelFile = locateElement("xpath","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr["+j+"]/th//a");
 				String delFile = searchDelFile.getText();
 			
 				if (delFile.equals(fileName))
@@ -175,7 +210,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickOnViewAllKeyDeals()
 	{
 		try {
-			click(locateElement("xapth","//a/span[text()='View All Key Deals']"));
+			click(locateElement("xpath","//a/span[text()='View All Key Deals']"));
 			solidWait(2);
 			reportStep("Clicked on View All Key Deals Link: ", "Pass");
 		} catch (Exception e) {
@@ -187,7 +222,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickOnOpportunityMenu()
 	{
 		try {
-			click(locateElement("xapth","//a[@title='Opportunities']/following::div"));
+			click(locateElement("xpath","//a[@title='Opportunities']/following::div"));
 			solidWait(3);
 			reportStep("Clicked on Opportunity Menu", "Pass");
 		} catch (Exception e) {
@@ -199,7 +234,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickOnCreateNewOpportunity()
 	{
 		try {
-			click(locateElement("xapth","//div[text()='New']"));
+			click(locateElement("xpath","//div[text()='New']"));
 			solidWait(2);
 			reportStep("Clicked on Create Opportunity Button", "Pass");
 		} catch (Exception e) {
@@ -211,7 +246,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage selectAllOpportunities()
 	{
 		try {
-			clickByJS(locateElement("xapth","//span[text()='All Opportunities']/ancestor::a[@role='menuitem']"));
+			clickByJS(locateElement("xpath","//span[text()='All Opportunities']/ancestor::a[@role='menuitem']"));
 			solidWait(2);
 			reportStep("Clicked on select all Opportunities", "Pass");
 		} catch (Exception e) {
@@ -223,7 +258,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage searchLead(String value)
 	{
 		try {
-			WebElement searchLead = locateElement("xapth","//input[contains(@placeholder,'Search this list')]");
+			WebElement searchLead = locateElement("xpath","//input[contains(@placeholder,'Search this list')]");
 			typeAndEnter(searchLead, value);
 			reportStep("Search for Lead: "+value, "Pass");
 			solidWait(2);
@@ -237,14 +272,14 @@ public class SalesPage extends PreAndPost {
 	{
 		
 		try {
-			WebElement dd_lead = locateElement("xapth","//input[@title='Search Leads']");		
+			WebElement dd_lead = locateElement("xpath","//input[@title='Search Leads']");		
 			solidWait(2);
 			int length = value.length();
 			if (length < 2)
 			{
-				clickByActions(locateElement("xapth","//lightning-icon[contains(@class,'inputLookupIcon')]"));
+				clickByActions(locateElement("xpath","//lightning-icon[contains(@class,'inputLookupIcon')]"));
 				solidWait(2);
-				click(locateElement("xapth","//span[@title='New Lead']"));
+				click(locateElement("xpath","//span[@title='New Lead']"));
 				reportStep("Clicked on New Lead", "Pass");
 				solidWait(2);
 			}
@@ -261,12 +296,42 @@ public class SalesPage extends PreAndPost {
 		return this;
 	}
 	
+	public SalesPage selectFontName(String value)
+	{
+		try {
+			click(locateElement("xpath","//span[text()='Information']/following::input[@name='font']"));
+			solidWait(1);
+			WebElement ele = locateElement("xpath","//span[text()='Information']/following::input[@name='font']/following::lightning-base-combobox-item//span[@title='"+value+"']");
+			scrollToVisibleElement(ele);
+			click(ele);
+			reportStep("Select value from Information dropdown: "+value, "Pass");
+		} catch (Exception e) {
+			reportStep("Unable to select value from Information dropdown: "+value, "Fail");
+		}
+		return this;
+	}
+	
+	public SalesPage selectFontSize(String size)
+	{
+		try {
+			click(locateElement("xpath","//span[text()='Information']/following::input[@name='font-size']"));
+			solidWait(1);
+			WebElement ele = locateElement("xpath","//span[text()='Information']/following::input[@name='font-size']/following::lightning-base-combobox-item//span[@title='"+size+"']");
+			scrollToVisibleElement(ele);
+			click(ele);
+			reportStep("Select value from Information dropdown: "+size, "Pass");
+		} catch (Exception e) {
+			reportStep("Unable to select value from Information dropdown: "+size, "Fail");
+		}
+		return this;
+	}
+	
 	public SalesPage selectSalutation(String value)
 	{
 		try {
-			click(locateElement("xapth","(//span[text()='Salutation']/following::div/a[contains(text(),'None')])[1]"));
+			click(locateElement("xpath","(//span[text()='Salutation']/following::div/a[contains(text(),'None')])[1]"));
 			solidWait(1);
-			WebElement ele = locateElement("xapth","(//div[@class='select-options' and @role='menu']/ul//a[contains(@title,'"+value+"')])[1]");
+			WebElement ele = locateElement("xpath","(//div[@class='select-options' and @role='menu']/ul//a[contains(@title,'"+value+"')])[1]");
 			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Select value from Salutation dropdown: "+value, "Pass");
@@ -279,11 +344,11 @@ public class SalesPage extends PreAndPost {
 	public SalesPage selectAccessType(String value)
 	{
 		try {
-			WebElement ele = locateElement("xapth","//span[text()='Access Type']/following::a[@class='select']");
+			WebElement ele = locateElement("xpath","//span[text()='Access Type']/following::a[@class='select']");
 			scrollToVisibleElement(ele);
 			click(ele);
 			solidWait(1);
-			ele = locateElement("xapth","//span[text()='Access Type']/following::a[@title='"+value+"']");
+			ele = locateElement("xpath","//span[text()='Access Type']/following::a[@title='"+value+"']");
 			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Select value from Salutation dropdown: "+value, "Pass");
@@ -296,9 +361,9 @@ public class SalesPage extends PreAndPost {
 	public SalesPage selectContractContactName(String value)
 	{
 		try {
-			click(locateElement("xapth","//input[@title='Search Contacts']"));
+			click(locateElement("xpath","//input[@title='Search Contacts']"));
 			solidWait(1);
-			WebElement ele = locateElement("xapth","(//input[@title='Search Contacts']/following-sibling::div//div[@class='listContent']/ul/li/a//div[contains(@title,'"+value+"')])[1]");
+			WebElement ele = locateElement("xpath","(//input[@title='Search Contacts']/following-sibling::div//div[@class='listContent']/ul/li/a//div[contains(@title,'"+value+"')])[1]");
 			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Select value from ContractContactName dropdown: "+value, "Pass");
@@ -311,7 +376,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage inputGroupName(String value)
 	{
 		try {
-			type(locateElement("xapth","(//label//span[text()='Name']/following::input)[1]"), value);
+			type(locateElement("xpath","(//label//span[text()='Name']/following::input)[1]"), value);
 			reportStep("Enter Group Name: "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to enter Group Name: "+value, "Fail");
@@ -319,10 +384,21 @@ public class SalesPage extends PreAndPost {
 		return this;
 	}
 	
+	public SalesPage inputGroupDescr(String value)
+	{
+		try {
+			type(locateElement("xpath","//span[text()='Description']/following::textarea"), value);
+			reportStep("Enter Group Description: "+value, "Pass");
+		} catch (Exception e) {
+			reportStep("Unable to enter Group Description: "+value, "Fail");
+		}
+		return this;
+	}
+	
 	public SalesPage inputFirstName(String value)
 	{
 		try {
-			type(locateElement("xapth","//label/span[text()='First Name']/following::input[contains(@class,'firstName')]"), value);
+			type(locateElement("xpath","//label/span[text()='First Name']/following::input[contains(@class,'firstName')]"), value);
 			reportStep("Enter FirstName: "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to enter FirstName: "+value, "Fail");
@@ -333,7 +409,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage inputLastName(String value)
 	{
 		try {
-			type(locateElement("xapth","//label/span[text()='Last Name']/following::input[contains(@class,'lastName')]"),value);
+			type(locateElement("xpath","//label/span[text()='Last Name']/following::input[contains(@class,'lastName')]"),value);
 			reportStep("Enter Last Name: "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to enter Last Name: "+value, "Fail");
@@ -344,7 +420,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage inputSubject(String value)
 	{
 		try {
-			type(locateElement("xapth","//span[text()='Subject']/parent::label/following-sibling::input"),value);
+			type(locateElement("xpath","//span[text()='Subject']/parent::label/following-sibling::input"),value);
 			reportStep("Enter Subject: "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to Enter Subject: "+value, "Fail");
@@ -355,7 +431,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage inputCaseDescription(String value)
 	{
 		try {
-			type(locateElement("xapth","//span[text()='Description']/parent::label/following-sibling::textarea"),value);
+			type(locateElement("xpath","//span[text()='Description']/parent::label/following-sibling::textarea"),value);
 			reportStep("Enter Case Description: "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to Enter Case Description: "+value, "Fail");
@@ -366,7 +442,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage inputCompanyName(String value)
 	{
 		try {
-			type(locateElement("xapth","(//label/span[text()='Company']/following::input[contains(@class,'input')])[1]"),value);
+			type(locateElement("xpath","(//label/span[text()='Company']/following::input[contains(@class,'input')])[1]"),value);
 			reportStep("Enter Company name: "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to Enter Company: "+value, "Fail");
@@ -377,7 +453,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage inputCloseDate(String value)
 	{
 		try {
-			type(locateElement("xapth","//label[text()='Close Date']/following-sibling::div//input[@name ='CloseDate']"),value);
+			type(locateElement("xpath","//label[text()='Close Date']/following-sibling::div//input[@name ='CloseDate']"),value);
 			reportStep("Enter Close date: "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to Enter Close date: "+value, "Fail");
@@ -388,9 +464,9 @@ public class SalesPage extends PreAndPost {
 	public SalesPage selectType(String value)
 	{
 		try {
-			click(locateElement("xapth","//label[text()='Type']/following-sibling::div//input[@type ='text']"));
+			click(locateElement("xpath","//label[text()='Type']/following-sibling::div//input[@type ='text']"));
 			solidWait(1);
-			WebElement ele = locateElement("xapth","(//label[text()='Type']/following-sibling::div//input[@type ='text']/parent::div/following-sibling::div//lightning-base-combobox-item//span[contains(text(),'"+value+"')])[1]");
+			WebElement ele = locateElement("xpath","(//label[text()='Type']/following-sibling::div//input[@type ='text']/parent::div/following-sibling::div//lightning-base-combobox-item//span[contains(text(),'"+value+"')])[1]");
 			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Select dropdown value from Type: "+value, "Pass");
@@ -403,9 +479,9 @@ public class SalesPage extends PreAndPost {
 	public SalesPage selectLeadSource(String value)
 	{
 		try {
-			click(locateElement("xapth","//label[text()='Lead Source']/following-sibling::div//input[@type ='text']"));
+			click(locateElement("xpath","//label[text()='Lead Source']/following-sibling::div//input[@type ='text']"));
 			solidWait(1);
-			WebElement ele = locateElement("xapth","(//label[text()='Lead Source']/following-sibling::div//input[@type ='text']/parent::div/following-sibling::div//lightning-base-combobox-item//span[contains(text(),'"+value+"')])[1]");
+			WebElement ele = locateElement("xpath","(//label[text()='Lead Source']/following-sibling::div//input[@type ='text']/parent::div/following-sibling::div//lightning-base-combobox-item//span[contains(text(),'"+value+"')])[1]");
 			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Select dropdown value from LeadSource: "+value, "Pass");
@@ -418,9 +494,9 @@ public class SalesPage extends PreAndPost {
 	public SalesPage selectStage(String value)
 	{
 		try {
-			click(locateElement("xapth","//label[text()='Stage']/following-sibling::div//input[@type ='text']"));
+			click(locateElement("xpath","//label[text()='Stage']/following-sibling::div//input[@type ='text']"));
 			solidWait(1);
-			WebElement ele = locateElement("xapth","(//label[text()='Stage']/following-sibling::div//input[@type ='text']/parent::div/following-sibling::div//lightning-base-combobox-item//span[contains(text(),'"+value+"')])[1]");
+			WebElement ele = locateElement("xpath","(//label[text()='Stage']/following-sibling::div//input[@type ='text']/parent::div/following-sibling::div//lightning-base-combobox-item//span[contains(text(),'"+value+"')])[1]");
 			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Select dropdown value from Stage: "+value, "Pass");
@@ -433,9 +509,9 @@ public class SalesPage extends PreAndPost {
 	public SalesPage selectPrimaryCampaignSource(String value)
 	{
 		try {
-			click(locateElement("xapth","//label[text()='Primary Campaign Source']/following-sibling::div//input[@type='text']"));
+			click(locateElement("xpath","//label[text()='Primary Campaign Source']/following-sibling::div//input[@type='text']"));
 			solidWait(1);
-			WebElement ele = locateElement("xapth","(//label[text()='Primary Campaign Source']/following-sibling::div//input[@type ='text']/parent::div/following-sibling::div//lightning-base-combobox-item//span[contains(text(),'"+value+"')])[1]");
+			WebElement ele = locateElement("xpath","(//label[text()='Primary Campaign Source']/following-sibling::div//input[@type ='text']/parent::div/following-sibling::div//lightning-base-combobox-item//span[contains(text(),'"+value+"')])[1]");
 			scrollToVisibleElement(ele);
 			click(ele);
 			reportStep("Select dropdown value from Primary Campaign Source: "+value, "Pass");
@@ -448,7 +524,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage inputOpportunityName(String value)
 	{
 		try {
-			type(locateElement("xapth","//label[text()='Opportunity Name']/following-sibling::div//input[@name ='Name']"), value);
+			type(locateElement("xpath","//label[text()='Opportunity Name']/following-sibling::div//input[@name ='Name']"), value);
 			reportStep("Enter Opportunity Name:  "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to enter Opportunity Name:  "+value, "Fail");
@@ -459,7 +535,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage inputAmount(String value)
 	{
 		try {
-			type(locateElement("xapth","//label[text()='Amount']/following-sibling::div//input[@name ='Amount']"),value);
+			type(locateElement("xpath","//label[text()='Amount']/following-sibling::div//input[@name ='Amount']"),value);
 			reportStep("Enter Amount value:  "+value, "Pass");
 		} catch (Exception e) {
 			reportStep("Unable to enter Amount value:  "+value, "Fail");
@@ -470,7 +546,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickOnAddLead()
 	{
 		try {
-			click(locateElement("xapth","//a[@title='Add Leads']"));
+			click(locateElement("xpath","//a[@title='Add Leads']"));
 			solidWait(2);
 			reportStep("Click on Add Lead","Pass");
 		} catch (Exception e) {
@@ -482,7 +558,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickOnSubmitButton()
 	{
 		try {
-			clickByJS(locateElement("xapth","//span[text()='Submit']"));
+			clickByJS(locateElement("xpath","//span[text()='Submit']"));
 			reportStep("Click on Submit button","Pass");
 		} catch (Exception e) {
 			reportStep("Unable to click on Submit button","Fail");
@@ -493,7 +569,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickonSaveButton()
 	{
 		try {
-			click(locateElement("xapth","(//button/span[text()='Save'])[last()]"));
+			click(locateElement("xpath","(//button/span[text()='Save'])[last()]"));
 			solidWait(1);
 			reportStep("Click on Save button","Pass");
 		} catch (Exception e) {
@@ -505,7 +581,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickonSaveAndNextButton()
 	{
 		try {
-			click(locateElement("xapth","//span[text()='Save & Next']/.."));
+			click(locateElement("xpath","//span[text()='Save & Next']/.."));
 			solidWait(1);
 			reportStep("Click on Save and Next button","Pass");
 		} catch (Exception e) {
@@ -514,10 +590,22 @@ public class SalesPage extends PreAndPost {
 		return this;
 	}
 	
+	public SalesPage clickonUploadImage()
+	{
+		try {
+			click(locateElement("xpath","(//span[text()='Next']/..)[1]"));
+			solidWait(1);
+			reportStep("Click on Next button","Pass");
+		} catch (Exception e) {
+			reportStep("Unable to click on Next button","Fail");
+		}
+		return this;
+	}
+	
 	public SalesPage clickonSaveOpportunity()
 	{
 		try {
-			click(locateElement("xapth","//button[@name='SaveEdit' and text()='Save']"));
+			click(locateElement("xpath","//button[@name='SaveEdit' and text()='Save']"));
 			solidWait(1);
 			reportStep("Click on Save Opportunity","Pass");
 		} catch (Exception e) {
@@ -529,7 +617,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage clickonNextButton()
 	{
 		try {
-			clickByJS(locateElement("xapth","//span[text()='Next']"));
+			clickByJS(locateElement("xpath","//span[text()='Next']"));
 			solidWait(1);
 			reportStep("Click on Next button","Pass");
 		} catch (Exception e) {
@@ -538,10 +626,78 @@ public class SalesPage extends PreAndPost {
 		return this;
 	}
 	
+	
+	public SalesPage clickonDone()
+	{
+		try {
+			click(locateElement("xpath","//span[text()='Done']/.."));
+			solidWait(1);
+			reportStep("Click on Done button","Pass");
+		} catch (Exception e) {
+			reportStep("Unable to click on Done button","Fail");
+		}
+		return this;
+	}
+	
+	
+	public SalesPage verifyGroupName(String grpName)
+	{
+		try {
+			String groupName = getText(locateElement("xpath","//div[contains(@class,'nameActionsContainer')]//span[@class='uiOutputText']"));
+			if (groupName.contains(grpName))
+			{
+				reportStep("Group name verified: "+grpName,"Pass");
+			}
+			else
+			{
+				reportStep("Unable to verify group name: "+grpName,"Fail");
+			}
+
+		} catch (WebDriverException e) {
+			reportStep("Unknown Exception occured while trying to verify Group Name: "+grpName,"Fail");
+		}
+		return this;
+	}
+	
+	public SalesPage verifyGroupNameAndType(String grpName, String accessType)
+	{
+		try {
+			click(locateElement("xpath","(//a[text()='"+grpName+"'])[1]"));
+			solidWait(3);
+			String groupAccessType = getText(locateElement("xpath","//div[contains(@class,'nameActionsContainer')]//span[text()='RajKamal']/following::span[@class='forceChatterOutputGroupCombinedType first']"));
+			if (groupAccessType.contains(accessType))
+			{
+				reportStep("Group name: "+grpName +" with access type: "+accessType + " verified","Pass");
+			}
+			else
+			{
+				reportStep("Unable to verify group name and access type: "+grpName + ", "+accessType,"Fail");
+			}
+		} catch (WebDriverException e) {
+			reportStep("Unknown Exception occured while trying to verify Group Name: "+grpName + ", "+accessType,"Fail");
+		}
+		return this;
+	}
+	
+	public SalesPage deleteGroupByName(String grpName)
+	{
+		try {
+			click(locateElement("xpath","(//a[text()='"+grpName+"'])[1]"));
+			solidWait(3);
+			click(locateElement("xpath","(//a[@title='Show 6 more actions' and @role='button'])[last()]"));
+			solidWait(1);
+			click(locateElement("xpath","//a[@title='Delete Group']"));
+			reportStep("Group: "+grpName +" deleted successfully","Pass");
+		} catch (WebDriverException e) {
+			reportStep("Unable to delete Group: "+grpName +"","Fail");
+		}
+		return this;
+	}
+	
 	public SalesPage clickonUploadAttachment()
 	{
 		try {
-			click(locateElement("xapth","//div[@title='Upload Files']"));
+			click(locateElement("xpath","//div[@title='Upload Files']"));
 			reportStep("Click on Upload Attachment Link","Pass");
 		} catch (Exception e) {
 			reportStep("Unable to click on Upload Attachment Link","Fail");
@@ -552,7 +708,7 @@ public class SalesPage extends PreAndPost {
 	public SalesPage ClickOnCampaignName(String campName)
 	{
 		try {
-			click(locateElement("xapth","(//a[contains(@title,'" + campName + "')])[1]"));
+			click(locateElement("xpath","(//a[contains(@title,'" + campName + "')])[1]"));
 			reportStep("Click on Campaign Name: "+campName,"Pass");
 		} catch (Exception e) {
 			reportStep("Unable to click on Campaign Name: "+campName,"Fail");
@@ -560,15 +716,27 @@ public class SalesPage extends PreAndPost {
 		return this;
 	}
 	
-	public SalesPage clickOndeleteLead(String fName, String lName)
+	public SalesPage clickOnDeleteLead(String fName, String lName)
 	{
 		String lead = fName + " " + lName;
 		try {
-			click(locateElement("xapth","(//a[text()='" +lead+ "']/following::td//a[@role='button'])[1]"));
-			click(locateElement("xapth","//div[@role='button' and @title='Delete']/.."));
+			click(locateElement("xpath","(//a[text()='" +lead+ "']/following::td//a[@role='button'])[1]"));
+			click(locateElement("xpath","//div[@role='button' and @title='Delete']/.."));
 			reportStep("Click on delete lead option for Lead: "+lead,"Pass");
 		} catch (Exception e) {
 			reportStep("Unable to click on delete lead option for Lead: "+lead,"Fail");
+		}
+		return this;
+	}
+	
+	public SalesPage clickOnEditGroup(String groupName)
+	{
+		try {
+			click(locateElement("xpath","(//a[text()='" +groupName+ "']/following::td//a[@role='button'])[1]"));
+			click(locateElement("xpath","//div[@role='button' and @title='Edit Group']/.."));
+			reportStep("Click on edit option for group: "+groupName,"Pass");
+		} catch (Exception e) {
+			reportStep("Unable to click on edit option for group: "+groupName,"Fail");
 		}
 		return this;
 	}
@@ -577,7 +745,7 @@ public class SalesPage extends PreAndPost {
 	{
 		try
 		{
-			String errMsgValue = getText(locateElement("xapth","//ul[@class='errorsList']/li"));
+			String errMsgValue = getText(locateElement("xpath","//ul[@class='errorsList']/li"));
 			SoftAssert softAssert = new SoftAssert();
 			softAssert.assertEquals(errMsg, errMsgValue);
 			softAssert.assertAll();
@@ -594,7 +762,7 @@ public class SalesPage extends PreAndPost {
 	{
 		try
 		{
-			String outputValue = getText(locateElement("xapth","//span[contains(text(),'Opportunity')]//a"));
+			String outputValue = getText(locateElement("xpath","//span[contains(text(),'Opportunity')]//a"));
 			if (outputValue.contains(oppName))
 			{
 				WebElement ele = webDriverWait4VisibilityOfEle(driver.findElementByXPath("//div[contains(text(),'Opportunity')]/following-sibling::slot/slot[@slot='primaryField']"));
@@ -620,7 +788,7 @@ public class SalesPage extends PreAndPost {
 		String leadName = fName + " " + lName;
 		try
 		{
-			String outputValue = getText(locateElement("xapth","//div[contains(@class,'toastTitle')]"));
+			String outputValue = getText(locateElement("xpath","//div[contains(@class,'toastTitle')]"));
 			
 			if (outputValue.contains(campName))
 			{
@@ -637,7 +805,7 @@ public class SalesPage extends PreAndPost {
 			{
 				clickOnTab("Leads");
 				searchLead(leadName);
-				String val = getText(locateElement("xapth","(//a[contains(@class,'forceOutputLookup')])[1]"));
+				String val = getText(locateElement("xpath","(//a[contains(@class,'forceOutputLookup')])[1]"));
 				if (val.contains(leadName))
 				{
 					reportStep("New Lead created is displayed under Leads Tab: "+leadName, "Pass");
@@ -656,11 +824,11 @@ public class SalesPage extends PreAndPost {
 		String lead = fName + " " + lName;
 		try
 		{
-			List<WebElement> rows = locateElements("xapth","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr");
+			List<WebElement> rows = locateElements("xpath","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr");
 			int size = rows.size();
 			for (int i = 1; i <= size; i++)
 			{
-				String leadNames = getText(locateElement("xapth","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr[" + i + "]//td[4]//a"));
+				String leadNames = getText(locateElement("xpath","//table[contains(@class,'uiVirtualDataTable') and not(contains(@class,'slds-no-cell-focus'))]//tbody/tr[" + i + "]//td[4]//a"));
 			
 				if (leadNames.equals(lead))
 				{

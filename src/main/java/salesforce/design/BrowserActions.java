@@ -30,7 +30,7 @@ public class BrowserActions extends SalesforceBase implements IBrowserActions{
 	public WebElement locateElement(String locator, String locValue) {
 
 		try {
-
+			
 			switch (locator.toLowerCase()) {
 			case "id": return driver.findElement(By.id(locValue));
 
@@ -40,7 +40,7 @@ public class BrowserActions extends SalesforceBase implements IBrowserActions{
 
 			case "link" : return driver.findElement(By.linkText(locValue));
 
-			case "xpath": return driver.findElement(By.xpath(locValue));	
+			case "xpath": return webDriverWait4VisibilityOfEle(driver.findElement(By.xpath(locValue)));	
 
 			default:
 				break;
@@ -71,7 +71,20 @@ public class BrowserActions extends SalesforceBase implements IBrowserActions{
 	public WebElement locateElement(String locValue) {
 		return driver.findElement(By.id(locValue));
 	}
-
+	
+//	public void openApplicationTab(WebElement ele)
+//	{
+//		JavascriptExecutor js = (JavascriptExecutor)driver;
+//		try {
+//			webDriverWait4VisibilityOfEle(ele);
+//			js.executeScript("arguments[0].click();", ele);
+//		} catch (JavascriptException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
 	public void type(WebElement ele, String data) {
 		try {
 			webDriverWait4VisibilityOfEle(ele);

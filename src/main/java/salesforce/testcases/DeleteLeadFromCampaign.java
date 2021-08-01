@@ -32,14 +32,14 @@ public class DeleteLeadFromCampaign extends PreAndPost {
 		new LoginPage(prop)
 		.enterUsername().enterPassword().clickLogin()
 		.clickToggleButton().clickViewAll()
-		.searchApp("Sales").clickOnSales();
-		clickOnTab("Leads");
-		salesPage.searchLead(lead).clickOndeleteLead(fName, lName);
+		.searchApp("Sales").clickOnSales()
+		.clickOnTab("Leads")
+		.searchLead(lead).clickOnDeleteLead(fName, lName);
 		
 		deletePopUpConfirmation();
 		
-		clickOnTab("Campaigns");
-		salesPage.searchAndClickOnCampaign(campName)
+		salesPage.clickOnTab("Campaigns")
+		.searchAndClickOnCampaign(campName)
 		.clickAndViewAllCampaignMembers().deleteLeadValidation(fName, lName);
 
 	}

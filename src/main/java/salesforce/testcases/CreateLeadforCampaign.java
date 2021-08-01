@@ -4,7 +4,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import salesforce.base.PreAndPost;
 import salesforce.pages.LoginPage;
-import salesforce.pages.SalesPage;
 import salesforce.utils.Logs;
 
 public class CreateLeadforCampaign extends PreAndPost {
@@ -31,10 +30,9 @@ public class CreateLeadforCampaign extends PreAndPost {
 		new LoginPage(prop)
 		.enterUsername().enterPassword().clickLogin()
 		.clickToggleButton().clickViewAll()
-		.searchApp("Sales").clickOnSales();
-		
-		clickOnTab("Campaigns");
-		new SalesPage().searchCampaign(campName).ClickOnCampaignName(campName)
+		.searchApp("Sales").clickOnSales()
+		.clickOnTab("Campaigns")
+		.searchFor(campName).ClickOnCampaignName(campName)
 		.clickOnAddLead().selectLead(createLead)
 		.selectSalutation("Mr").inputFirstName(fName).inputLastName(lName).inputCompanyName(compName)
 		.clickonSaveButton().clickonNextButton().clickOnSubmitButton()

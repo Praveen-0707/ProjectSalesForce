@@ -4,17 +4,16 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import salesforce.base.PreAndPost;
 import salesforce.pages.LoginPage;
-import salesforce.pages.SalesPage;
 import salesforce.utils.Logs;
 
-public class CreateGroups extends PreAndPost {
+public class EditGroups extends PreAndPost {
 	
 	@BeforeTest
 	public void setTestDetails() {
 		excelFileName = "Campaign";
 		excelSheetName = "Leads";
-		testName = "Create Group";
-		testDescription = "Create New Group";
+		testName = "Edit Group";
+		testDescription = "Edit the group description";
 		testAuthor = "Praveen Raj A";
 		testCategory = "Regression";
 		
@@ -23,23 +22,21 @@ public class CreateGroups extends PreAndPost {
 	}
 	
 	@Test
-	public void createGroup() {
+	public void editGroup() {
 		
-		SalesPage sales = new SalesPage();
 		new LoginPage(prop)
 		.enterUsername().enterPassword().clickLogin()
 		.clickToggleButton().clickViewAll()
 		.searchApp("Sales").clickOnSales()
 		.clickOnTab("Groups")
-		.clickOnNewButton()
-		.inputGroupName("RajPraveen")
-		.selectAccessType("Public")
-		.clickonSaveAndNextButton()
-		.clickonUploadImage();
-		uploadAttachment("Praveenraj.jpg");
-		sales.clickonNextButton()
-		.clickonDone()
-		.verifyGroupName("RajKamal");
+		.searchFor("RajPraveen")
+		.clickOnEditGroup("RajPraveen")
+		.inputGroupDescr("Changes made")
+		.selectFontName("Verdana")
+		.selectFontSize("18")
+		.selectAccessType("Private")
+		.clickonSaveButton()
+		.verifyGroupNameAndType("RajPraveen", "Private");
 		
 	}
 

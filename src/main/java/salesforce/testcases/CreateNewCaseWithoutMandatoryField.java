@@ -4,7 +4,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import salesforce.base.PreAndPost;
 import salesforce.pages.LoginPage;
-import salesforce.pages.SalesPage;
 import salesforce.utils.Logs;
 
 public class CreateNewCaseWithoutMandatoryField extends PreAndPost {
@@ -30,10 +29,9 @@ public class CreateNewCaseWithoutMandatoryField extends PreAndPost {
 		.enterUsername().enterPassword().clickLogin()
 		
 		.clickToggleButton().clickViewAll()
-		.searchApp("Sales").clickOnSales();
-		
-		clickOnTab("Cases");
-		new SalesPage().clickOnNewButton()
+		.searchApp("Sales").clickOnSales()
+		.clickOnTab("Cases")
+		.clickOnNewButton()
 		.selectContractContactName(contactName).inputSubject(subject).inputCaseDescription(description)
 		.clickonSaveButton().errValidationOnCaseCreation(errMsg);
 

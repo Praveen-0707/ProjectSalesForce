@@ -35,9 +35,8 @@ public class TC_WorkoutSubscription extends PreAndPost {
 		
 		.clickToggleButton().clickViewAll()
 		.searchApp("Service Console").clickOnApp("Service Console");
-		new ServiceConsolePage()
 		
-		.selectTask("Home")
+		SC.selectTask("Home")
 		.validateGoalPrice("10000")
 		.selectTask("Dashboards").clickOnNewDashboard()
 		.inputDashboardName(dashboardName).inputDashboardDescr(descr).clickOnCreateButton();
@@ -49,9 +48,9 @@ public class TC_WorkoutSubscription extends PreAndPost {
 		.setSubscriptionFrequencyAs("Daily")
 		.selectTime("10:00 AM").clickonSaveButton()
 		.verifyNewDashboardCreation(dashboardName).closeAnOpenedTab(dashboardName);
-		clickOnTab("Dashboards");
-
-		SC.clickonPrivateDashboard().searchDashboardName(dashboardName)
+		
+		SC.clickOnTab("Dashboards")
+		.clickonPrivateDashboard().searchDashboardName(dashboardName)
 		.deleteSubscription(dashboardName);
 	
 		deletePopUpConfirmation();

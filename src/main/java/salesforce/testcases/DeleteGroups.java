@@ -7,14 +7,14 @@ import salesforce.pages.LoginPage;
 import salesforce.pages.SalesPage;
 import salesforce.utils.Logs;
 
-public class CreateGroups extends PreAndPost {
+public class DeleteGroups extends PreAndPost {
 	
 	@BeforeTest
 	public void setTestDetails() {
 		excelFileName = "Campaign";
 		excelSheetName = "Leads";
-		testName = "Create Group";
-		testDescription = "Create New Group";
+		testName = "Delete Group";
+		testDescription = "delete the group";
 		testAuthor = "Praveen Raj A";
 		testCategory = "Regression";
 		
@@ -23,7 +23,7 @@ public class CreateGroups extends PreAndPost {
 	}
 	
 	@Test
-	public void createGroup() {
+	public void deleteGroup() {
 		
 		SalesPage sales = new SalesPage();
 		new LoginPage(prop)
@@ -31,15 +31,10 @@ public class CreateGroups extends PreAndPost {
 		.clickToggleButton().clickViewAll()
 		.searchApp("Sales").clickOnSales()
 		.clickOnTab("Groups")
-		.clickOnNewButton()
-		.inputGroupName("RajPraveen")
-		.selectAccessType("Public")
-		.clickonSaveAndNextButton()
-		.clickonUploadImage();
-		uploadAttachment("Praveenraj.jpg");
-		sales.clickonNextButton()
-		.clickonDone()
-		.verifyGroupName("RajKamal");
+		.searchFor("RajPraveen")
+		.deleteGroupByName("RajPraveen");
+		deletePopUpConfirmation();
+		sales.verifyDeleteGroup("RajPraveen");
 		
 	}
 

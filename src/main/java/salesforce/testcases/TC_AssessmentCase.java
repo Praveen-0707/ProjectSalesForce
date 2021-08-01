@@ -72,8 +72,8 @@ public class TC_AssessmentCase extends PreAndPost {
 		.verifyUploadedFileDetails(uploadFile, uploadFileExtension);
 		
 		closeAnOpenedTab(uploadFile);
-		clickOnTab("Files");
-		servObj.clickToOpenFile(uploadFile, "Delete");
+		servObj.clickOnTab("Files")
+		.clickToOpenFile(uploadFile, "Delete");
 		deletePopUpConfirmation();
 		servObj.verifyDeleteAttachment(uploadFile);
 		
