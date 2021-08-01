@@ -72,25 +72,12 @@ public class BrowserActions extends SalesforceBase implements IBrowserActions{
 		return driver.findElement(By.id(locValue));
 	}
 	
-//	public void openApplicationTab(WebElement ele)
-//	{
-//		JavascriptExecutor js = (JavascriptExecutor)driver;
-//		try {
-//			webDriverWait4VisibilityOfEle(ele);
-//			js.executeScript("arguments[0].click();", ele);
-//		} catch (JavascriptException e) {
-//			e.printStackTrace();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
 	public void type(WebElement ele, String data) {
 		try {
 			webDriverWait4VisibilityOfEle(ele);
 			ele.clear();
 			ele.sendKeys(data);
-			reportStep("The data: "+data+" entered successfully in the field :"+ele, "PASS");
+//			reportStep("The data: "+data+" entered successfully in the field :"+ele, "PASS");
 		} catch (InvalidElementStateException e) {
 			reportStep("The data: "+data+" could not be entered in the field :"+ele,"FAIL");
 		} catch (WebDriverException e) {

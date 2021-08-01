@@ -9,8 +9,8 @@
  
  <test thread-count="5" name="Accounts" verbose="5">
     <classes>
-      <!-- <class name="salesforce.testcases.CreateAccount"/> -->
-      <class name="salesforce.testcases.EditAccount"/>
+      <class name="salesforce.testcases.CreateAccount"/>
+      <!-- <class name="salesforce.testcases.EditAccount"/> -->
       <!-- <class name="salesforce.testcases.DeleteAccount"/>
       <class name="salesforce.testcases.SortingAccounts"/> -->
     </classes>

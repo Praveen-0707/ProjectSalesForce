@@ -10,18 +10,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
@@ -55,32 +55,61 @@ public class SalesforceBase extends Reporter {
 	public Properties prop;
 	public ExtentTest testNode;
 	public String browserName;
+	public String remoteRun;
 	public String sUrl,sHubUrl,sHubPort;
 	
-	public void launchApp(String browser)
+	
+	public SalesforceBase() {
+		prop = new Properties();
+		try {
+			prop.load(new FileInputStream(new File("./src/main/resources/config.properties")));
+			sHubUrl = prop.getProperty("HUB");
+			sHubPort = prop.getProperty("PORT");
+			sUrl = prop.getProperty("url");
+			browserName = prop.getProperty("browser");
+			remoteRun = prop.getProperty("remoteRun");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static final String URL = "https://oauth-praveen.beula77-586b7:9261db47-d810-4a8f-8c07-50a085624764@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+	
+	public void launchApp()
 	{
 		testNode = test.createNode(testName);
 		setTest(testNode);
-		try {
-			FileInputStream fis = new FileInputStream("./src/main/resources/config.properties");
-			prop = new Properties();
-			prop.load(fis);
-			browserName = prop.getProperty("browser");
-			
-			DesiredCapabilities dc = new DesiredCapabilities();
-			dc.setBrowserName(browserName);
-			dc.setPlatform(Platform.WINDOWS);
-
-			
+		
+		DesiredCapabilities dcaps = new DesiredCapabilities();
+//		dcaps.setBrowserName(browserName);
+		dcaps.setCapability("browserName", browserName);
+		dcaps.setCapability("browserVersion", "latest");
+		dcaps.setCapability("platformName", "Windows 10");
+		dcaps.setCapability("extendedDebugging", "true");
+		
+		if(remoteRun.equalsIgnoreCase("true"))
+			try {
+					if (browserName.equalsIgnoreCase("Chrome")) {
+					WebDriverManager.chromedriver().setup();
+					dcaps.setCapability(ChromeOptions.CAPABILITY, setChromeOptions());}
+					else if (browserName.equalsIgnoreCase("Firefox")) {
+						WebDriverManager.firefoxdriver().setup();
+						dcaps.setCapability(FirefoxOptions.FIREFOX_OPTIONS, setFirefoxOptions());}
+					driver = new RemoteWebDriver(new URL(URL), dcaps);
+					setDriver(driver);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+		else
+		{		
+			try
+			{
 			if (browserName.equalsIgnoreCase("Chrome"))
 			  {
 				  WebDriverManager.chromedriver().setup();
-				  chromeOptions = new ChromeOptions();
-				  chromeOptions.addArguments("--disable-notifications");
-				  chromeOptions.addArguments("--disable-notifications");
-//				  chromeOptions.addArguments("--headless");
-//				  chromeOptions.setHeadless(true);
-				  driver = new ChromeDriver(chromeOptions);
+				  driver = new ChromeDriver(setChromeOptions());
 //				  driver = new EventFiringWebDriver(webDriver);
 //				  getDriver().register((WebDriverEventListener) this);
 				  setDriver(driver);
@@ -89,18 +118,7 @@ public class SalesforceBase extends Reporter {
 			  if (browserName.equalsIgnoreCase("Firefox"))
 			  {
 				  WebDriverManager.firefoxdriver().setup();
-				  FirefoxProfile profile = new FirefoxProfile();
-				  profile.setPreference("app.update.auto", false);
-				  profile.setPreference("app.update.enabled", false);
-				  profile.setAcceptUntrustedCertificates(false);
-				  profile.setPreference("browser.shell.checkDefaultBrowser", false);
-				  
-				  firefoxOptions = new FirefoxOptions();
-//				  firefoxOptions.addArguments("headless");
-//				  firefoxOptions.setHeadless(true);
-				  firefoxOptions.setProfile(profile);
-				  firefoxOptions.addPreference("dom.webnotifications.enabled", false);
-				  driver = new FirefoxDriver(firefoxOptions);
+				  driver = new FirefoxDriver(setFirefoxOptions());
 				  setDriver(driver);
 			  }
 			  
@@ -112,23 +130,44 @@ public class SalesforceBase extends Reporter {
 				  driver = new EdgeDriver(edgeOptions);
 				  setDriver(driver);
 			  }
-			  
-			getDriver().manage().deleteAllCookies();
-			getDriver().manage().window().maximize();
-			getDriver().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-			getDriver().manage().timeouts().pageLoadTimeout(20,TimeUnit.SECONDS);
 			
-			getDriver().get(prop.getProperty("url"));
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		}
 	}
+		getDriver().manage().deleteAllCookies();
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		getDriver().manage().timeouts().pageLoadTimeout(20,TimeUnit.SECONDS);
 		
+		getDriver().get(sUrl);
+}
+	public ChromeOptions setChromeOptions()
+	{
+		  chromeOptions = new ChromeOptions();
+		  chromeOptions.addArguments("--disable-notifications");
+//		  chromeOptions.addArguments("--headless");
+//		  chromeOptions.setHeadless(true);
+		  return chromeOptions;
+	}
+	
+	
+	public FirefoxOptions setFirefoxOptions()
+	{
+		  FirefoxProfile profile = new FirefoxProfile();
+		  profile.setPreference("app.update.auto", false);
+		  profile.setPreference("app.update.enabled", false);
+		  profile.setAcceptUntrustedCertificates(false);
+		  profile.setPreference("browser.shell.checkDefaultBrowser", false);
+		  
+		  firefoxOptions = new FirefoxOptions();
+//		  firefoxOptions.addArguments("headless");
+//		  firefoxOptions.setHeadless(true);
+		  firefoxOptions.setProfile(profile);
+		  firefoxOptions.addPreference("dom.webnotifications.enabled", false);
+		  return firefoxOptions;
+	}
+	
 	public void deletePopUpConfirmation()
 	{
 		try {

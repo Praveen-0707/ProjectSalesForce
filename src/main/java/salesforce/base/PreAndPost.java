@@ -24,8 +24,8 @@ public class PreAndPost extends BrowserActions {
 	}
 	
 	@BeforeMethod
-	public void beforeMethod() {
-		launchApp(browserName);
+	public void beforeMethod() throws Exception {
+		launchApp();
 	}
 
 	@AfterMethod
